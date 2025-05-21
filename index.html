@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Portada e Información</title>
+  <link rel="stylesheet" href="CSS.css">
+</head>
+<body>
+
+  <h1>Generador de Portada</h1>
+
+  <label for="propiedad">Propiedad</label>
+  <input type="text" id="propiedad" placeholder="Ej: SDAD COOP DEL ALAGÓN">
+
+  <label for="cif">CIF</label>
+  <input type="text" id="cif" placeholder="Ej: F10003549">
+
+  <label for="direccion">Dirección</label>
+  <input type="text" id="direccion" placeholder="Ej: CTRA EX-108, KM 87,40">
+
+  <label for="localidad">Localidad</label>
+  <input type="text" id="localidad" placeholder="Ej: CORIA (CÁCERES)">
+
+  <label for="cp">Código Postal</label>
+  <input type="text" id="cp" placeholder="Ej: 10800">
+
+  <label for="ingeniero">Nombre del Ingeniero</label>
+  <input type="text" id="ingeniero" placeholder="Ej: D. Cayetano Muñoz Labrador">
+
+  <label for="colegiado">Número de Colegiado</label>
+  <input type="text" id="colegiado" placeholder="Ej: 2026">
+
+  <label for="colegio">Colegio Profesional</label>
+  <input type="text" id="colegio" placeholder="Ej: Colegio Oficial de Ingenieros Técnicos...">
+
+  <label for="fecha">Fecha</label>
+  <input type="text" id="fecha" placeholder="Ej: Badajoz, a 18 de Enero de 2021">
+
+  <br><br><br>
+  <h1>Generador de Información</h1>
+
+  <label for="objeto">Objeto</label>
+  <textarea id="objeto" rows="4" cols="80" placeholder="Ej: En el presente proyecto se proponen..."></textarea>
+
+  <label for="dsel">Diseño del sistema y estudio del emplazamiento del local</label>
+  <textarea id="dsel" rows="4" cols="80" placeholder="Ej: Consiste en el diseño de un Sistema de Seguridad..."></textarea>
+
+  <label for="psel">Plano de situación del emplazamiento del local</label>
+  <input type="file" id="psel" accept="image/*">
+
+  <label for="dlp">Descripción del lugar a proteger</label>
+  <textarea id="dlp" rows="4" cols="80" placeholder="Ej: Se trata de un local situado en la población de..."></textarea>
+
+  <label for="nds">Nivel de seguridad</label>
+  <textarea id="nds" rows="4" cols="80" placeholder="Ej: Si bien según el análisis de los riesgos..."></textarea>
+  
+  <label for="edepi">EMPLAZAMIENTO DE EQUIPOS Y PLANIFICACIÓN DE LA INSTALACIÓN</label>
+
+  <label for="sacv">Sistema de alarmas y cámaras de videovigilancia</label>
+  <textarea id="sacv" rows="4" cols="80" placeholder="Ej: La instalación dispone de una zona de acceso..."></textarea>
+
+  <label for="cta">Comunicación y transmisión de alarmas</label>
+  <textarea id="cta" rows="4" cols="80" placeholder="Ej: La transmisión de alarmas se realizará..."></textarea>
+
+  <label for="mds">Mantenimiento del sistema</label>
+  <textarea id="mds" rows="4" cols="80" placeholder="Ej: El servicio de mantenimiento consistirá en la realización..."></textarea>
+
+  <label for="mds">Datos de contacto de la empresa mantenedora</label>
+  <textarea id="dcem" rows="4" cols="80" placeholder="Ej: Grupo Segurymat Siglo XXI S.L..."></textarea>
+
+  <label for="mds">Central receptora de alarmas</label>
+  <textarea id="cra" rows="4" cols="80" placeholder="Ej: El sistema queda conectado con la Central Receptora de Alarmas de..."></textarea>
+
+  <label for="mds">Datos de contacto de la C.R.A.</label>
+  <textarea id="dc" rows="4" cols="80" placeholder="Ej: Grupo On seguridad, S.L..."></textarea>
+
+  <label for="a1">ANEXO I: PLANO DE ELEMENTOS DE SEGURIDAD</label>
+  <input type="file" id="a1" accept="image/*">
+
+  <label for="a2">ANEXO II: CERTIFICADOS DE EQUIPOS</label>
+  <input type="file" id="a2" accept="image/*">
+
+  <label for="a3">ANEXO III: CERTIFICADO DE CONEXIÓN A CRA</label>
+  <input type="file" id="a3" accept="image/*">
+
+  <label for="a4">ANEXO IV: CERTIFICADO DE INSTALACIÓN</label>
+  <input type="file" id="a4" accept="image/*">
+
+  <label for="a5">ANEXO V: MANUAL DE USUARIO</label>
+  <input type="file" id="a5" accept="image/*">
+  <br>
+  <button onclick="generarPortadaeInformacion()">Generar Portada e Información</button>
+
+  <script src="./JavaScript.js"></script>
+</body>
+</html>
+
+
+
+<!--Me falta que se puedan cargar las imágenes y que cuando el usuario ponga salto de párrafo se ponga al crear el documento, que el pdf se cree y que pueda descargarse-->
