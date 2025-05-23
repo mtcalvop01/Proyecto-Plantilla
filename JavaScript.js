@@ -100,15 +100,18 @@ window.addEventListener("DOMContentLoaded", () => {
         <p><strong>Dirección:</strong> ${datos.direccion || ""}</p>
         <p><strong>Localidad:</strong> ${datos.localidad || ""}</p>
         <p><strong>CP:</strong> ${datos.cp || ""}</p>
-        <br />
+        <div class="gris"></div>
+        <br>
         <p><strong>INGENIERO TÉCNICO INDUSTRIAL:</strong></p>
         <p>${datos.ingeniero || ""}</p>
         <p>Colegiado Nº ${datos.colegiado || ""}</p>
         <p>${datos.colegio || ""}</p>
+        <div class="gris"></div>
       </div>
       <div class="footer">
         ${datos.fecha || ""}
       </div>
+      
     `;
 
     // Construcción de HTML para anexos
