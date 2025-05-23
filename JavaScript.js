@@ -212,17 +212,13 @@ function descargarPDF() {
       .then((pdf) => {
         const totalPages = pdf.internal.getNumberOfPages();
         const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
 
-        // Tamaño del logo
-        const logoWidth = 1.0;  // pulgadas
-        const logoHeight = 0.5; // pulgadas
-
-        // Posición en cabecera derecha (margen derecho - logoWidth, margen superior)
-        const marginRight = 0.5;
-        const marginTop = 0.2;
-
-        const posX = pageWidth - marginRight - logoWidth;
-        const posY = marginTop;
+        // Tamaño del logo para la marca de agua
+        const logoWidth = 4.0;  // pulgadas (ajustado para que sea más grande como marca de agua)
+        const logoHeight = 2.0; // pulgadas (manteniendo proporción)
+        const posX = (pageWidth - logoWidth) / 2; // Centrado horizontalmente
+        const posY = (pageHeight - logoHeight) / 2; // Centrado verticalmente
 
         for (let i = 1; i <= totalPages; i++) {
           pdf.setPage(i);
@@ -232,9 +228,11 @@ function descargarPDF() {
           pdf.setTextColor(100);
           pdf.text(`Página ${i} de ${totalPages}`, pageWidth / 2, pdf.internal.pageSize.getHeight() - 0.3, { align: "center" });
 
-          // Logo solo desde página 2 en adelante
+          // Logo como marca de agua desde página 2 en adelante
           if (i !== 1) {
+            pdf.setGState(new pdf.GState({ opacity: 0.1 })); // Establecer opacidad baja para marca de agua
             pdf.addImage(logoMarcaAgua, "PNG", posX, posY, logoWidth, logoHeight, undefined, 'LOW');
+            pdf.setGState(new pdf.GState({ opacity: 1.0 })); // Restaurar opacidad normal
           }
         }
       })
