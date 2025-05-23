@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="CSS.css">
 </head>
 <body>
-
   <h1>Generador de Portada</h1>
 
   <label for="propiedad">Propiedad</label>
@@ -40,7 +39,9 @@
   <h1>Generador de Información</h1>
 
   <label for="objeto">Objeto</label>
-  <textarea id="objeto" rows="4" cols="80" placeholder="Ej: En el presente proyecto se proponen..."></textarea>
+  <textarea id="objeto" rows="4" cols="80">
+    En el presente proyecto se proponen características del diseño, instalación, funcionamiento y mantenimiento del sistema de seguridad frente a intrusión y CCTV necesarios para prevenir la comisión de hechos delictivos en el lugar protegido. Se ha elaborado siguiendo las recomendaciones descritas en la Norma UNE-CLC/TS 50131-7 a fin de dar cumplimiento al artículo 42 del Reglamento de Seguridad Privada.
+  </textarea>
 
   <label for="dsel">Diseño del sistema y estudio del emplazamiento del local</label>
   <textarea id="dsel" rows="4" cols="80" placeholder="Ej: Consiste en el diseño de un Sistema de Seguridad..."></textarea>
@@ -52,27 +53,109 @@
   <textarea id="dlp" rows="4" cols="80" placeholder="Ej: Se trata de un local situado en la población de..."></textarea>
 
   <label for="nds">Nivel de seguridad</label>
-  <textarea id="nds" rows="4" cols="80" placeholder="Ej: Si bien según el análisis de los riesgos..."></textarea>
-  
+  <textarea id="nds" rows="4" cols="80">
+    Si bien según el análisis de los riesgos de desprende que el nivel de riesgo global es moderado, en este caso, y según Ley 05/2014 de Seguridad Privada, el reglamento 2364/94 de Seguridad Privada y la Orden INT/317/2011 de 1 de febrero sobre medidas de seguridad privada modificado por la Orden INT/1504/2013 de 30 de Julio. Esta instalación requiere que el sistema de seguridad sea de GRADO 3 según la norma UNE-EN 50131-1. En Anexo se adjuntan los certificados de cumplimiento de grado de los elementos.
+  </textarea>
+
   <label for="edepi">EMPLAZAMIENTO DE EQUIPOS Y PLANIFICACIÓN DE LA INSTALACIÓN</label>
 
   <label for="sacv">Sistema de alarmas y cámaras de videovigilancia</label>
   <textarea id="sacv" rows="4" cols="80" placeholder="Ej: La instalación dispone de una zona de acceso..."></textarea>
 
   <label for="cta">Comunicación y transmisión de alarmas</label>
-  <textarea id="cta" rows="4" cols="80" placeholder="Ej: La transmisión de alarmas se realizará..."></textarea>
+  <textarea id="cta" rows="4" cols="80">
+    La transmisión de alarmas se realizará por media de un comunicador con tecnología IP de la marca Paradoz y como respaldo comunicador GSM/GPRS del mismo fabricante.
+    La central de alarmas GRUPO ON donde serán enviadas las señales provocadas por la alarma se encuentra en C/Maciñeiras, 46, Parque Empresarial Sete Pontes, 27800 Vilalba, Lugo.
+    El CCTV también podrá ser gestionado desde la misma central receptora de alarmas, que en caso de producirse algún salto de alarma podrán conectarse para realizar el proceso de video-verificación.
+  </textarea>
 
   <label for="mds">Mantenimiento del sistema</label>
-  <textarea id="mds" rows="4" cols="80" placeholder="Ej: El servicio de mantenimiento consistirá en la realización..."></textarea>
+  <textarea id="mds" rows="4" cols="80">
+    El servicio de mantenimiento consistirá en la realización trimestral de comprobaciones técnicas presenciales y remotas para verificar el adecuado funcionamiento del sistema. Se realizará conforme a las comprobaciones indicadas en el Reglamento 2364/1994 de Seguridad Privada y la Orden INT/316/2011. Las intervenciones realizadas serán anotadas en el libro catálogo de instalación y revisiones que se entregará al cliente debidamente diligenciado.
+    A continuación, detallamos un resumen de las operaciones a realizar en las visitas de mantenimiento presencial, todas ellas según lo recogido en el Anexo II de la INT/316/2011:
+  </textarea>
+  <table border="1" style="margin: 0 auto;" id="tabla-mantenimiento">
+    <tr>
+      <th>OPERACIONES PRINCIPALES DEL MANTENIMIENTO PRINCIPAL</th>
+    </tr>
+    <tr><td>Comporbar la orientación de los detectores</td></tr>
+    <tr><td>Limpieza de detectores y demás elementos de detección</td></tr>
+    <tr><td>Comprobar que todos los elementos funcionan correctamente</td></tr>
+    <tr><td>Verificación de fuentes de alimentación. Signo de calentamiento</td></tr>
+    <tr><td>Revisar memoria de eventos</td></tr>
+    <tr><td>Comprobar que el sistema arma y desarma correctamente</td></tr>
+    <tr><td>Comprobar que el sistema transmite a C.R.A. todas las zonas</td></tr>
+    <tr><td>Comprobar el correcto estado y carga de las baterías</td></tr>
+    <tr><td>Comprobar el correcto funcionamiento de los transmisores</td></tr>
+    <tr><td>Comprobar la correca conmutación de vía en caso de corte</td></tr>
+  </table>
+  <textarea id="mds1" rows="4" cols="80">
+    El sistema se revisará 3 veces al año de manera bidireccional a través de la central receptora (los aspectos a revisar en las intervenciones bidireccionales remotas serán los recogidos en el Anexo III de la INT/316/2011).
+    Anualmente se realizará una revisión presencial por personal técnico de la empresa instaladora nº4524 (Grupo Segurymat Siglo XXI S.L.).
+    El personal del mantenimiento técnico que efectúen las pertinentes revisiones presenciales del sistema está formado y tiene conocimiento exhaustivo del contenido de las normas UNE-EN-50131 y siguientes, de forma que cualquier inspección o revisión de seguridad se ajuste a ellas.
+    Las revisiones presenciales a efectuar tendrán como objetivo el realizar un completo test del estado y funcionamiento del sistema.
+    Antes de iniciar el proceso de mantenimiento, el técnico se pondrá en contacto con la CRA, identificándose e informando que se sitúe el sistema en estado de pruebas, registrando las señales obtenidas, pero sin cursar alarma. Al final de las pruebas se debería obtener otro registro del período de pruebas y comprobar por la CRA si todas las alarmas generadas han sido recibidas.
+    Se comprobará el sistema de alimentación verificando el suministro de 220V, la tensión de las salidas, la tensión de carga de las baterías, así como la antigüedad de las mismas (sustituir si tiene más de 6 años), se provocarán fallos de Corriente Alterna y fallos de batería, y se comprobará su señalización.
+    Se comprobará el funcionamiento correcto de las protecciones de la caja central al igual que con el teclado del sistema. Pruebas tampers.
+    Se comprobará la cobertura de los detectores volumétricos y el funcionamiento de los elementos que requieren una actividad manual tales como los pulsadores de atraco. Al comprobar la cobertura se hará incidencia en los posibles cambios de mobiliario, objetos almacenados, etc... efectuados después de la instalación o de la última revisión presencial por si hay que modificar estos con objeto de que no interfieran en la idoneidad del funcionamiento del detector.
+    Se comprobará la transmisión de las alarmas por todas las vías de comunicación con las que cuente el sistema, así como todos los requerimientos que indica la Norma UNE-EN 50131 en el apartado de mantenimiento de comunicaciones. Se enmascararán los detectores para comprobar la actuación correcta de dicha función.
+  </textarea>
 
-  <label for="mds">Datos de contacto de la empresa mantenedora</label>
-  <textarea id="dcem" rows="4" cols="80" placeholder="Ej: Grupo Segurymat Siglo XXI S.L..."></textarea>
+  <label for="dcem">Datos de contacto de la empresa mantenedora</label>
+  <table border="1" style="margin: 0 auto;" id="tabla-dcem">
+    <tr>
+      <th>EMPRESA INSTALADORA Y MANTENEDORA</th>
+    </tr>
+    <tr>
+      <td>
+        GRUPO SEGURYMAT SIGLO XXI S.L.<br>
+        Teléfono 24 Horas: 902 586 588<br>
+        e-mail: <u>incidencias@segurymat.es</u>
+      </td>
+    </tr>
+  </table>
 
-  <label for="mds">Central receptora de alarmas</label>
-  <textarea id="cra" rows="4" cols="80" placeholder="Ej: El sistema queda conectado con la Central Receptora de Alarmas de..."></textarea>
+  <label for="cra">Central receptora de alarmas</label>
+  <textarea id="cra" rows="4" cols="80">
+    El sistema queda conectado con la Central Receptora de Alarmas de GRUPO ON SEGURIDAD S.L. desde donde se verificarán las alarmas secuencial y visualmente según los procedimientos de la orden INT/316/2011 y a los protocolos complementarios de aviso establecidos con el cliente.
+  </textarea>
 
-  <label for="mds">Datos de contacto de la C.R.A.</label>
-  <textarea id="dc" rows="4" cols="80" placeholder="Ej: Grupo On seguridad, S.L..."></textarea>
+  <label for="dc">Datos de contacto de la C.R.A.</label>
+  <p></p>
+  <table border="1" style="margin: 0 auto;" id="tabla-dc">
+    <tr>
+      <th>CENTRAL RECEPTORA DE ALARMAS</th>
+    </tr>
+    <tr>
+      <td>
+        GRUPO SEGURYMAT SIGLO XXI S.L.<br>
+        Teléfono 24 Horas: 902 586 588<br>
+        e-mail: <u>incidencias@segurymat.es</u>
+      </td>
+    </tr>
+  </table>
+  <textarea id="dc" rows="4" cols="80">
+    Cumpliendo con el artículo 47 del Reglamento 2364/94 de Seguridad Privada, la C.R.A. informará al usuario antes de efectuar la conexión definitiva de su sistema de alarma, sobre los detalles de funcionamiento del servicio, las características técnicas y funcionales del sistema en lo relacionado con la verificación de alarmas y las responsabilidades que conlleva su incorporación al mismo. Principalmente se dará importancia a su correcto manejo y a los principales aspectos que pueden provocar falsas alarmas que deberán evitarse:
+  </textarea>
+  <table border="1" id="tabla-falsas-alarmas">
+    <tr>
+      <th>ASPECTOS QUE PUEDEN PROVOCAR FALSAS ALARMAS QUE DEBEN EVITARSE</th>
+    </tr>
+    <tr><td>Errores de manejo de los usuarios al entrar o salir (muy frecuentes). Evitar que manejen el sistema personas no entrenadas. No dar llaves del local a personas que no sepan conectar y desconectar la alarma.</td></tr>
+    <tr><td>Si se ha producido una falsa alarma al conectar, se debe esperar sin marcharse a confirmar su falsedad con la C.R.A. Lo mismo si se produce al desconectar.</td></tr>
+    <tr><td>Ventanas, puertas o lucernarios que den al exterior y se dejen abiertos por los que puedan entrar corrientes de aire cercanas a detectores de infrarrojos.</td></tr>
+    <tr><td>Sistemas de calefacción o aire acondicionado que se enciendan o apaguen automáticamente provocando cambios bruscos de temperatura en las zonas cubiertas por detectores de infrarrojos.</td></tr>
+    <tr><td>Calentamientos solares bruscos de parámetros de salas con detectores de infrarrojos, como cristaleras o tejados.</td></tr>
+    <tr><td>Letreros suspendidos que puedan llegar a moverse solos fácilmente en zonas cubiertas por detectores volumétricos.</td></tr>
+    <tr><td>Ciertos alumbrados directos sobre los detectores de infrarrojos, tales como luces estroboscópicas, deslumbramiento solar, luz de soldadura eléctrica, encendido de luces fluorescentes, etc.</td></tr>
+    <tr><td>Aparatos que provoquen ruido eléctrico potente cercano, tales como generadores o motores eléctricos.</td></tr>
+    <tr><td>Presencia de animales en salas con detectores volumétricos, tales como perros, gatos, ratones, pájaros o insectos. Un insecto encima de un detector puede provocar una falsa alarma. Las mascotas deben estar en salas no cubiertas por detectores volumétricos.</td></tr>
+    <tr><td>Atmósferas industriales o comerciales polvorientas.</td></tr>
+    <tr><td>Apertura los elementos del sistema de alarma.</td></tr>
+    <tr><td>Iniciar obras en el local sin haber avisado antes a la empresa mantenedora o a la C.R.A. para estimar el riesgo de problemas o falsas alarmas.</td></tr>
+    <tr><td>Cortes en las líneas de comunicación a las que está conectado el sistema de alarma.</td></tr>
+    <tr><td>Cortes en el suministro eléctrico del sistema de alarma. El automático y diferencial al que se encuentre conectado el sistema de alarma y CCTV no deben bajarse.</td></tr>
+  </table>
 
   <label for="a1">ANEXO I: PLANO DE ELEMENTOS DE SEGURIDAD</label>
   <input type="file" id="a1" accept="image/*">
@@ -88,8 +171,9 @@
 
   <label for="a5">ANEXO V: MANUAL DE USUARIO</label>
   <input type="file" id="a5" accept="image/*">
+
   <br>
-  <button onclick="generarPortadaeInformacion()">Generar Portada e Información</button>
+  <button type="button" onclick="generarPortadaeInformacion()">Generar Portada e Información</button>
 
   <script src="./JavaScript.js"></script>
 </body>

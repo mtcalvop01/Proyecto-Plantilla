@@ -80,13 +80,20 @@
       margin-bottom: 20px;
     }
 
-    .info-box p , .info-box1 p{
-      margin: 5px 0;
-      font-size: 14px;
-      text-align: justify;
-      hyphens: none;
-      word-break: normal;
-      overflow-wrap: break-word;
+    .info-box p, .info-box1 p {
+  margin-top: 12px;      /* más espacio arriba */
+  margin-bottom: 12px;   /* más espacio abajo */
+  font-size: 16px;       /* letra un poco más grande */
+  text-align: justify;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-indent: 0;
+}
+
+
+    .info-box1 p.tabulado {
+      text-indent: 20px;
     }
 
     #informacion{

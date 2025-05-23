@@ -1,13 +1,12 @@
 // Función auxiliar para convertir saltos de línea (\n) en párrafos (<p>)
 function convertirSaltosDeLinea(texto) {
   if (!texto) return "";
-  // Dividimos el texto por saltos de línea y creamos un <p> por cada línea
   return texto
     .split("\n")
-    .map((linea) => linea.trim()) // Eliminar espacios innecesarios
-    .filter((linea) => linea.length > 0) // Ignorar líneas vacías
-    .map((linea) => `<p>${linea}</p>`) // Envolver cada línea en un <p>
-    .join(""); // Unir los párrafos sin agregar saltos de línea adicionales
+    .map((linea) => linea.trim())
+    .filter((linea) => linea.length > 0)
+    .map((linea) => `<p>${linea}</p>`)
+    .join("");
 }
 
 // Función para leer archivos y convertirlos a base64
@@ -20,20 +19,22 @@ function leerArchivo(file) {
   });
 }
 
+// Función para capturar datos y redirigir a Portada.html guardando en localStorage
 async function generarPortadaeInformacion() {
   const fileInput = document.getElementById("psel");
   const file = fileInput.files[0];
 
-  // Capturar las imágenes de los anexos
+  // Captura imágenes de anexos
   const anexos = {};
   const anexoIds = ["a1", "a2", "a3", "a4", "a5"];
   for (const id of anexoIds) {
     const input = document.getElementById(id);
-    if (input.files[0]) {
+    if (input && input.files[0]) {
       anexos[id] = await leerArchivo(input.files[0]);
     }
   }
 
+  // Captura tablas como HTML
   const datos = {
     propiedad: document.getElementById("propiedad").value,
     cif: document.getElementById("cif").value,
@@ -51,16 +52,21 @@ async function generarPortadaeInformacion() {
     sacv: document.getElementById("sacv").value,
     cta: document.getElementById("cta").value,
     mds: document.getElementById("mds").value,
-    dcem: document.getElementById("dcem").value,
+    mds1: document.getElementById("mds1").value,
+    dcem: document.getElementById("dcem") ? document.getElementById("dcem").value : "",
     cra: document.getElementById("cra").value,
     dc: document.getElementById("dc").value,
-    anexos: anexos, // Almacenar las imágenes de los anexos
+    tablaMantenimiento: document.getElementById("tabla-mantenimiento")?.outerHTML || "",
+    tablaDcem: document.getElementById("tabla-dcem")?.outerHTML || "",
+    tablaDc: document.getElementById("tabla-dc")?.outerHTML || "",
+    tablaFalsasAlarmas: document.getElementById("tabla-falsas-alarmas")?.outerHTML || "",
+    anexos: anexos
   };
 
   if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      datos.plano = e.target.result; // base64 image
+      datos.plano = e.target.result;
       localStorage.setItem("datosProyecto", JSON.stringify(datos));
       window.location.href = "Portada.html";
     };
@@ -71,6 +77,7 @@ async function generarPortadaeInformacion() {
   }
 }
 
+// Código que se ejecuta al cargar Portada.html para mostrar los datos
 window.addEventListener("DOMContentLoaded", () => {
   const portadaDiv = document.getElementById("portada");
   const infoDiv = document.getElementById("informacion");
@@ -104,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // Generar las imágenes de los anexos como imágenes, no como texto
+    // Construcción de HTML para anexos
     let anexosHTML = "";
     if (datos.anexos) {
       if (datos.anexos.a1) {
@@ -129,7 +136,6 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Procesamos cada campo de texto para convertir saltos de línea en párrafos
     infoDiv.innerHTML = `
       <div class="info-box1">
         <p><strong>OBJETO</strong></p>
@@ -138,9 +144,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ${convertirSaltosDeLinea(datos.dsel)}
         ${
           datos.plano
-            ? `<p><strong><br>PLANO DE SITUACIÓN DEL EMPLAZAMIENTO DEL LOCAL</strong><br><img src="${
-                datos.plano
-              }" alt="Plano del local" style="max-width:90%;height:auto;"></p>`
+            ? `<p><strong><br>PLANO DE SITUACIÓN DEL EMPLAZAMIENTO DEL LOCAL</strong><br><img src="${datos.plano}" alt="Plano del local" style="max-width:90%;height:auto;"></p>`
             : ""
         }
         <p><strong>DESCRIPCIÓN DEL LUGAR A PROTEGER</strong></p>
@@ -154,18 +158,30 @@ window.addEventListener("DOMContentLoaded", () => {
         ${convertirSaltosDeLinea(datos.cta)}
         <p><strong>MANTENIMIENTO DEL SISTEMA</strong></p>
         ${convertirSaltosDeLinea(datos.mds)}
+        ${convertirSaltosDeLinea(datos.mds1)}
+        ${datos.tablaMantenimiento || ""}
         <p><strong>DATOS DE CONTACTO DE LA EMPRESA MANTENEDORA</strong></p>
-        ${convertirSaltosDeLinea(datos.dcem)}
+        ${datos.tablaDcem || ""}
         <p><strong>CENTRAL RECEPTORA DE ALARMAS</strong></p>
         ${convertirSaltosDeLinea(datos.cra)}
         <p><strong>DATOS DE CONTACTO DE LA C.R.A</strong></p>
+        ${datos.tablaDc || ""}
         ${convertirSaltosDeLinea(datos.dc)}
-        ${anexosHTML} <!-- Insertamos las imágenes de los anexos aquí -->
+        ${datos.tablaFalsasAlarmas || ""}
+        ${anexosHTML}
       </div>
     `;
+
+    // Añadir sangría a párrafos que empiezan por mayúscula
+    infoDiv.querySelectorAll("p").forEach(p => {
+      if (/^[A-ZÁÉÍÓÚÑ]/.test(p.textContent.trim())) {
+        p.classList.add("tabulado");
+      }
+    });
   }
 });
 
+// Función para descargar el contenido como PDF con numeración de páginas
 function descargarPDF() {
   const btn = document.getElementById("btnDescargarPDF");
   btn.style.display = "none";
@@ -174,7 +190,7 @@ function descargarPDF() {
     const elemento = document.body;
 
     const opt = {
-      margin: [0.5, 0.5, 0.7, 0.5], // Aumentamos el margen inferior para dejar espacio al número de página
+      margin: [0.5, 0.5, 0.7, 0.5],
       filename: "Proyecto.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2, scrollY: 0, useCORS: true },
@@ -182,7 +198,6 @@ function descargarPDF() {
       pagebreak: { mode: ["avoid-all", "css", "legacy"] },
     };
 
-    // Usamos el evento output para acceder al objeto jsPDF y agregar los números de página
     html2pdf()
       .set(opt)
       .from(elemento)
@@ -190,18 +205,16 @@ function descargarPDF() {
       .get("pdf")
       .then((pdf) => {
         const totalPages = pdf.internal.getNumberOfPages();
-
-        // Iteramos sobre cada página para agregar el número de página
         for (let i = 1; i <= totalPages; i++) {
           pdf.setPage(i);
           pdf.setFontSize(10);
-          pdf.setTextColor(100); // Gris oscuro
+          pdf.setTextColor(100);
           const pageWidth = pdf.internal.pageSize.getWidth();
           const pageHeight = pdf.internal.pageSize.getHeight();
           pdf.text(
             `Página ${i} de ${totalPages}`,
-            pageWidth / 2, // Centrado horizontalmente
-            pageHeight - 0.3, // A 0.3 pulgadas del borde inferior
+            pageWidth / 2,
+            pageHeight - 0.3,
             { align: "center" }
           );
         }
@@ -212,6 +225,7 @@ function descargarPDF() {
       });
   }, 100);
 }
+
 
 
 
